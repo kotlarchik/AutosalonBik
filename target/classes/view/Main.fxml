@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: #fcb6dd;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerMain">
+   <children>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="10.0" layoutY="100.0" prefHeight="490.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+         <content>
+            <TilePane fx:id="tilePane" alignment="CENTER" prefHeight="138.0" prefWidth="131.0" />
+         </content>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </ScrollPane>
+      <Label layoutX="11.0" layoutY="12.0" text="Поиск:">
+         <font>
+            <Font name="Comic Sans MS Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search" layoutX="79.0" layoutY="11.0" prefHeight="25.0" prefWidth="250.0" style="-fx-border-color: #000;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <ComboBox fx:id="comboBox" layoutX="179.0" layoutY="55.0" prefWidth="150.0" style="-fx-border-color: #000;">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </ComboBox>
+      <Button layoutX="400.0" layoutY="12.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="400.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="501.0" layoutY="12.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="501.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="11.0" layoutY="58.0" text="Сортировка по маркам:">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <InnerShadow />
+   </effect>
+</AnchorPane>
