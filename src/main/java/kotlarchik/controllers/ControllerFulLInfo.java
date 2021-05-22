@@ -46,10 +46,10 @@ public class ControllerFulLInfo {
     // Говнокод
     @FXML
     void imageClick() throws IOException {
-//        FileChooser chooser = new FileChooser();
-//        File path = chooser.showOpenDialog(new Stage());
-//        File file = new File(path.getAbsolutePath());
-//        BufferedImage bufferedImage = ImageIO.read(file);
+        FileChooser chooser = new FileChooser();
+        File path = chooser.showOpenDialog(new Stage());
+        File file = new File(path.getAbsolutePath());
+        BufferedImage bufferedImage = ImageIO.read(file);
     }
 
     @FXML
