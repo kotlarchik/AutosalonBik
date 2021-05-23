@@ -1,5 +1,6 @@
 package kotlarchik.controllers;
 
+import com.sun.glass.ui.CommonDialogs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -43,13 +44,28 @@ public class ControllerFulLInfo {
 
     private String path;
 
-    // Говнокод
+    // Говнокод(Уже рабочий, но не имеет полной логики);
     @FXML
     void imageClick() throws IOException {
-//        FileChooser chooser = new FileChooser();
-//        File path = chooser.showOpenDialog(new Stage());
-//        File file = new File(path.getAbsolutePath());
-//        BufferedImage bufferedImage = ImageIO.read(file);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+//        Если путь не пустой;
+        if (selectedFile != null){
+//            Задаём новое изображение(берём адресс(toURI().toURL()) фотографии и открываем поток(.openStream()));
+            imageView.setImage(new Image(selectedFile.toURI().toURL().openStream()));
+//            В противном случае(Если мы не выбрали путь) просто верни нам уже существуещее изображение из Instancemodel;
+        } else {
+            imageView.setImage(new Image(instancemodel.getImage()));
+        }
+
+//        Здесь должен быть код для сохранения фотографии в /image/"название фотки", но мне лень это реализовывать :(;
+//        P.S. Говнокодил AlexLifeless;
+//        К слову с вас 3 hundred bucks и дизайн;
     }
 
     @FXML
