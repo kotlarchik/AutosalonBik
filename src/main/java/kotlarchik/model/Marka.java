@@ -25,8 +25,6 @@ public class Marka {
 
     @Override
     public String toString() {
-        return "Marka{" +
-                "id=" + id +
-                ", name='" + name;
+        return name;
     }
 }

@@ -34,6 +34,9 @@ public class ControllerTile {
     private Label labelCost;
 
     @FXML
+    private Label code;
+
+    @FXML
     private VBox vBox;
 
     private Instancemodel instancemodel;
@@ -45,6 +48,7 @@ public class ControllerTile {
 
     public void initData(Instancemodel instancemodel){
         this.instancemodel = instancemodel;
+        code.setText("Комплектация:" + instancemodel.getCode());
         imageView.setImage(new Image(instancemodel.getImage()));
         labelCost.setText(String.format("%.3f руб.", instancemodel.getCost()));
         labelMarka.setText(instancemodel.getModel().getMarka().getName());
@@ -60,6 +64,7 @@ public class ControllerTile {
 
         Stage primaryStage = new Stage();
         primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Подробная информация об автомобиле");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
         primaryStage.setScene(new Scene(anchorPane));

@@ -18,6 +18,9 @@ public class Instancemodel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "color")
     private String color;
 

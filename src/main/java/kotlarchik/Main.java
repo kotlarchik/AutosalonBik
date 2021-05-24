@@ -6,7 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import kotlarchik.dao.DAO;
+import kotlarchik.model.Model;
+import kotlarchik.service.ServiceModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

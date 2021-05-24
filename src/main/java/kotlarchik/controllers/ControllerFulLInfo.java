@@ -5,6 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -12,10 +15,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kotlarchik.dao.DAO;
 import kotlarchik.model.Instancemodel;
 import kotlarchik.model.Marka;
+import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
 import kotlarchik.service.ServiceInstanceModel;
 import kotlarchik.service.ServiceMarka;
 import org.hibernate.SessionFactory;
@@ -23,10 +29,10 @@ import org.hibernate.cfg.Configuration;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class ControllerFulLInfo {
     @FXML
@@ -45,7 +51,7 @@ public class ControllerFulLInfo {
     private Button hide;
 
     @FXML
-    private ComboBox<String> combo;
+    private ComboBox<Marka> combo;
 
     private Instancemodel instancemodel;
 
@@ -67,48 +73,44 @@ public class ControllerFulLInfo {
     }
 
     private void initComboBox() {
-        ObservableList<String> comboss = FXCollections.observableArrayList();
-
-        comboss.add("Все марки");
-            for (Marka marka: markas){
-                comboss.add(marka.getName());
-            }
-        combo.setValue(comboss.get(0));
-
-        combo.setItems(comboss);
+        combo.setItems(markas);
     }
 
-    // NE TROJJJ!
+    // <=========> AlexLifeless <=========>
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Выберите путь к картинке");
+        fileChooser.setTitle("Выберите путь к изображению");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Все файлы", "*.png", "*.jpg")
         );
+        String namePhoto = null;
+
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null){
-            imageView.setImage(new Image(selectedFile.toURI().toURL().openStream()));
+            namePhoto = selectedFile.getName();
+        }
 
+        if (selectedFile != null){
+            imageView.setImage(new Image(selectedFile.toURI().toURL().openStream()));
+            File source = new File(selectedFile.getAbsolutePath());
+            File dest = new File("./src/main/resources/image/" + namePhoto);
+            copyImage(source, dest);
         } else {
             imageView.setImage(new Image(instancemodel.getImage()));
         }
     }
 
-    @FXML
-    void pressDel(ActionEvent event) {
-//        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-//        DAO<Instancemodel, Integer> instancemodelDAO = new ServiceInstanceModel(factory);
-//        instancemodelDAO.delete(instancemodel);
-
-        hide.getScene().getWindow().hide();
+    @SneakyThrows
+    private void copyImage(File source, File dest){
+        Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
+    // <=========> AlexLifeless <=========>
 
     @FXML
-    void pressUp(ActionEvent event) {
+    void pressUp(ActionEvent event) {}
 
-    }
 
     public void setData(Instancemodel instancemodel){
         this.instancemodel = instancemodel;
@@ -116,5 +118,17 @@ public class ControllerFulLInfo {
         txtModel.setText(instancemodel.getModel().getName());
         txtCost.setText(String.format("%.3f руб.", instancemodel.getCost()));
         imageView.setImage(new Image(instancemodel.getImage()));
+    }
+
+    @FXML
+    public void pressPTS(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/PTS.fxml"));
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Данные ПТС");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
