@@ -1,6 +1,8 @@
 package kotlarchik.controllers;
 
 import com.sun.glass.ui.CommonDialogs;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,10 +13,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import kotlarchik.dao.DAO;
 import kotlarchik.model.Instancemodel;
 import kotlarchik.model.Marka;
 import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
+import kotlarchik.service.ServiceInstanceModel;
+import kotlarchik.service.ServiceMarka;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -40,13 +47,39 @@ public class ControllerFulLInfo {
     private Button hide;
 
     @FXML
-    private ComboBox<Marka> combo;
+    private ComboBox<String> combo;
 
     private Instancemodel instancemodel;
 
-    private String path;
+    private ObservableList<Marka> markas = FXCollections.observableArrayList();
+    private ObservableList<Instancemodel> instancemodels = FXCollections.observableArrayList();
 
-    // Говнокод(Уже рабочий, но не имеет полной логики);
+    @FXML
+    void initialize(){
+        initData();
+        initComboBox();
+    }
+
+    private void initData(){
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        DAO<Instancemodel, Integer> instancemodelDAO = new ServiceInstanceModel(factory);
+
+        DAO<Marka, Integer> markaDAO = new ServiceMarka(factory);
+        markas.addAll(markaDAO.readAll());
+    }
+
+    private void initComboBox() {
+        ObservableList<String> comboss = FXCollections.observableArrayList();
+
+        comboss.add("Все марки");
+            for (Marka marka: markas){
+                comboss.add(marka.getName());
+            }
+        combo.setValue(comboss.get(0));
+
+        combo.setItems(comboss);
+    }
+
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -69,16 +102,22 @@ public class ControllerFulLInfo {
         }
     }
 
-    @FXML
-    void pressDel(ActionEvent event) {}
-
-    @FXML
-    void pressUp(ActionEvent event) {}
-
     @SneakyThrows
     private void copyImage(File source, File dest){
         Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
+
+
+    @FXML
+    void pressDel(ActionEvent event) {
+//        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+//        DAO<Instancemodel, Integer> instancemodelDAO = new ServiceInstanceModel(factory);
+//        instancemodelDAO.delete(instancemodel);
+        hide.getScene().getWindow().hide();
+    }
+
+    @FXML
+    void pressUp(ActionEvent event) {}
 
 
     public void setData(Instancemodel instancemodel){
