@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{

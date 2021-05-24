@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="vBox" alignment="CENTER" onMouseClicked="#click" prefHeight="300.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerTile">
+<VBox fx:id="vBox" alignment="CENTER" onMouseClicked="#click" prefHeight="300.0" prefWidth="260.0" style="-fx-border-color: #ff6bbc; -fx-border-radius: 40; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerTile">
    <children>
       <ImageView fx:id="imageView" fitHeight="180.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>
-            <Insets />
+            <Insets top="10.0" />
          </VBox.margin>
          <effect>
             <InnerShadow />
@@ -19,7 +19,7 @@
       </ImageView>
       <Label fx:id="labelMarka" text="Label">
          <VBox.margin>
-            <Insets top="5.0" />
+            <Insets top="3.0" />
          </VBox.margin>
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
@@ -27,7 +27,7 @@
       </Label>
       <Label fx:id="labelModel" text="Label">
          <VBox.margin>
-            <Insets top="10.0" />
+            <Insets top="5.0" />
          </VBox.margin>
          <font>
             <Font name="Comic Sans MS Bold" size="16.0" />
@@ -35,7 +35,7 @@
       </Label>
       <Label fx:id="labelCost" text="Label">
          <VBox.margin>
-            <Insets top="15.0" />
+            <Insets top="8.0" />
          </VBox.margin>
          <font>
             <Font name="Comic Sans MS" size="15.0" />

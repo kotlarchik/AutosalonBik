@@ -69,9 +69,9 @@ public class ControllerTile {
     private void visibleTile(){
         vBox.hoverProperty().addListener((observableValue, aBoolean, t1) -> {
             if (t1 == true){
-                vBox.setStyle("-fx-border-color: green");
+                vBox.setStyle("-fx-border-color: #38ff00; -fx-border-radius: 40; -fx-border-width: 3");
             } else {
-                vBox.setStyle("-fx-border-color: white");
+                vBox.setStyle("-fx-border-color: #ff6bbc; -fx-border-radius: 40; -fx-border-width: 3");
             }
         });
     }
