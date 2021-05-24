@@ -13,13 +13,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import kotlarchik.model.Instancemodel;
 import kotlarchik.model.Marka;
+import lombok.SneakyThrows;
+import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class ControllerFulLInfo {
     @FXML
@@ -52,31 +54,32 @@ public class ControllerFulLInfo {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
         );
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
-//        Если путь не пустой;
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        String namePhoto = selectedFile.getName();
+
+        File source = new File(selectedFile.getAbsolutePath());
+        File dest = new File("./src/main/resources/image/" + namePhoto);
+
         if (selectedFile != null){
-//            Задаём новое изображение(берём адресс(toURI().toURL()) фотографии и открываем поток(.openStream()));
             imageView.setImage(new Image(selectedFile.toURI().toURL().openStream()));
-//            В противном случае(Если мы не выбрали путь) просто верни нам уже существуещее изображение из Instancemodel;
+            copyImage(source, dest);
         } else {
             imageView.setImage(new Image(instancemodel.getImage()));
         }
-
-//        Здесь должен быть код для сохранения фотографии в /image/"название фотки", но мне лень это реализовывать :(;
-//        P.S. Говнокодил AlexLifeless;
-//        К слову с вас 3 hundred bucks и дизайн;
     }
 
     @FXML
-    void pressDel(ActionEvent event) {
-
-    }
+    void pressDel(ActionEvent event) {}
 
     @FXML
-    void pressUp(ActionEvent event) {
+    void pressUp(ActionEvent event) {}
 
+    @SneakyThrows
+    private void copyImage(File source, File dest){
+        Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
+
 
     public void setData(Instancemodel instancemodel){
         this.instancemodel = instancemodel;
