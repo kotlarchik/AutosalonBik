@@ -78,6 +78,7 @@ public class ControllerFulLInfo {
         combo.setItems(comboss);
     }
 
+    // NE TROJJJ!
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -93,10 +94,6 @@ public class ControllerFulLInfo {
         } else {
             imageView.setImage(new Image(instancemodel.getImage()));
         }
-
-//        Здесь должен быть код для сохранения фотографии в /image/"название фотки", но мне лень это реализовывать :(;
-//        P.S. Говнокодил AlexLifeless;
-//        К слову с вас 3 hundred bucks и дизайн;
     }
 
     @FXML
