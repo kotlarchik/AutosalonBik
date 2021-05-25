@@ -27,5 +27,4 @@ public class Instancetransmission {
     @ManyToOne
     @JoinColumn(name = "gears_id")
     private Gears gears;
-
 }

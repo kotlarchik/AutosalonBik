@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ControllerFulLInfo {
+    public Button buttonPTS;
     @FXML
     private ImageView imageView;
 
@@ -48,7 +49,13 @@ public class ControllerFulLInfo {
     private TextArea txtEquipmentInfo;
 
     @FXML
-    private Button hide;
+    private TextField txtEquipment;
+
+    @FXML
+    private TextField txtTransmission;
+
+    @FXML
+    private TextField txtCountGears;
 
     @FXML
     private ComboBox<Marka> comboMark;
@@ -60,7 +67,7 @@ public class ControllerFulLInfo {
     private ComboBox<Transmission> comboTransmission;
 
     @FXML
-    private ComboBox<Gears> comboCountTrans;
+    private ComboBox<Gears> comboCountGears;
 
     private Instancemodel instancemodel;
 
@@ -77,6 +84,8 @@ public class ControllerFulLInfo {
     void initialize(){
         initData();
         initComboBox();
+        initTxt();
+        check();
     }
 
     private void initData(){
@@ -102,7 +111,7 @@ public class ControllerFulLInfo {
         comboMark.setItems(markas);
         comboEquipment.setItems(equipments);
         comboTransmission.setItems(transmissions);
-        comboCountTrans.setItems(gears);
+        comboCountGears.setItems(gears);
     }
 
     private String namePhoto = null;
@@ -144,7 +153,6 @@ public class ControllerFulLInfo {
         initialize();
 
         txtModel.setText(instancemodel.getModel().getName());
-        txtMarka.setText(instancemodel.getModel().getMarka().getName());
     }
 
     @FXML
@@ -189,13 +197,62 @@ public class ControllerFulLInfo {
         if (!txtEquipmentInfo.getText().isEmpty() && comboEquipment.getValue() != null){
             options.setName(txtEquipmentInfo.getText());
             options.setEquipment(comboEquipment.getValue());
+            optionsDAO.update(option);
         } else if (comboEquipment.getValue() == null){
             options.setEquipment(option.getEquipment());
             options.setName(txtEquipmentInfo.getText());
+            optionsDAO.update(option);
         }
 
-        optionsDAO.update(option);
+
+
+//        Transmission;
+        DAO<Instancetransmission, Integer> instancetransmissionDAO = new ServiceInstanceTransmission(factory);
+        Instancetransmission instancetransmission = new Instancetransmission();
+        ObservableList<Instancetransmission> instancetransmissionList = FXCollections.observableArrayList();
+        instancetransmissionList.addAll(instancetransmissionDAO.readAll());
+        for (Instancetransmission instancetransmission1:instancetransmissionList) {
+            if (instancetransmission1.getTransmission().getId() ==
+                    options.getInstancetransmission()
+                            .getTransmission()
+                            .getId()){
+                instancetransmission = instancetransmission1;
+            }
+        }
+
+
+        if (comboTransmission.getValue() != null){
+            instancetransmission.setTransmission(comboTransmission.getValue());
+        } else {
+            instancetransmission.setTransmission(options.getInstancetransmission().getTransmission());
+        }
+
+        instancetransmissionDAO.update(instancetransmission);
+
+
         clearScreen();
+    }
+
+    private void initTxt(){
+        comboEquipment.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (oldValue != null)
+            txtEquipment.setText(oldValue.getName());
+        });
+
+        comboTransmission.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (oldValue != null)
+            txtTransmission.setText(oldValue.getType());
+        });
+
+        comboCountGears.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (oldValue != null)
+            txtCountGears.setText(String.valueOf(oldValue.getNumber()));
+        });
+
+        comboMark.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (oldValue != null)
+            txtMarka.setText(oldValue.getName());
+        });
     }
 
     public void setData(Instancemodel instancemodel){
@@ -206,9 +263,13 @@ public class ControllerFulLInfo {
         imageView.setImage(new Image(instancemodel.getImage()));
         txtCode.setText(instancemodel.getCode());
 
+
         for (Options options1: optionsList) {
             if (options1.getEquipment().getId() == instancemodel.getEquipment().getId()){
                 txtEquipmentInfo.setText(options1.getName());
+                txtTransmission.setText(options1.getInstancetransmission().getTransmission().getType());
+                txtEquipment.setText(options1.getEquipment().getName());
+                txtCountGears.setText(String.valueOf(options1.getInstancetransmission().getGears().getNumber()));
                 this.option = options1;
             }
         }

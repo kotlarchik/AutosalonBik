@@ -79,9 +79,9 @@ public class ControllerTile {
     private void visibleTile(){
         vBox.hoverProperty().addListener((observableValue, aBoolean, t1) -> {
             if (t1 == true){
-                vBox.setStyle("-fx-border-color: #38ff00; -fx-border-radius: 40; -fx-border-width: 3");
+                vBox.setStyle("-fx-border-color: #2f3c50; -fx-border-radius: 40; -fx-border-width: 3; -fx-background-color: #6b82b3; -fx-background-radius: 40");
             } else {
-                vBox.setStyle("-fx-border-color: #ff6bbc; -fx-border-radius: 40; -fx-border-width: 3");
+                vBox.setStyle("-fx-border-color: #2f3c50; -fx-border-radius: 40; -fx-border-width: 3; -fx-background-color:  #2f3c50; -fx-background-radius: 40");
             }
         });
     }
