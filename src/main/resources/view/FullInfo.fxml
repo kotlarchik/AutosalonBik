@@ -76,7 +76,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <TextField fx:id="txtMarka" disable="true" layoutX="144.0" layoutY="326.0" prefHeight="27.0" prefWidth="233.0" style="-fx-border-color: #000; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.topAnchor="326.0">
+      <TextField fx:id="txtMarka" layoutX="144.0" layoutY="326.0" prefHeight="27.0" prefWidth="233.0" style="-fx-border-color: #000; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.topAnchor="326.0">
          <effect>
             <InnerShadow />
          </effect></TextField>
@@ -88,7 +88,7 @@
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <Button layoutX="488.0" layoutY="416.0" mnemonicParsing="false" onAction="#pressUp" prefHeight="62.0" prefWidth="119.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #ef8aff;" text="Внести изменения" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="488.0" AnchorPane.topAnchor="416.0">
+      <Button fx:id="hide" layoutX="488.0" layoutY="416.0" mnemonicParsing="false" onAction="#pressUp" prefHeight="62.0" prefWidth="119.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #ef8aff;" text="Внести изменения" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="488.0" AnchorPane.topAnchor="416.0">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
@@ -104,13 +104,8 @@
             <Reflection bottomOpacity="0.02" fraction="0.15" topOpacity="0.35" />
          </effect>
       </Button>
-<<<<<<< HEAD
-      <ComboBox fx:id="combo" layoutX="144.0" layoutY="354.0" prefHeight="25.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.topAnchor="354.0" />
+      <ComboBox fx:id="comboMark" layoutX="144.0" layoutY="354.0" prefHeight="25.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.topAnchor="354.0" />
       <Button fx:id="buttonPTS" layoutX="632.0" layoutY="416.0" mnemonicParsing="false" onAction="#pressPTS" prefHeight="62.0" prefWidth="119.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #ef8aff;" text="Обновить ПТС" textAlignment="CENTER" wrapText="true">
-=======
-      <ComboBox fx:id="comboMark" layoutX="158.0" layoutY="350.0" prefHeight="25.0" prefWidth="233.0" AnchorPane.topAnchor="350.0" />
-      <Button fx:id="buttonPTS" layoutX="632.0" layoutY="416.0" mnemonicParsing="false" onAction="#pressPTS" prefHeight="62.0" prefWidth="130.0" text="Обновить ПТС" textAlignment="CENTER" wrapText="true">
->>>>>>> 0159e596dbfb437fd2e0411716cd6fce0bb7f4e1
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
@@ -222,12 +217,8 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-<<<<<<< HEAD
-      <ComboBox fx:id="comboComplectation" layoutX="604.0" layoutY="77.0" prefHeight="25.0" prefWidth="156.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
-=======
       <ComboBox fx:id="comboEquipment" layoutX="604.0" layoutY="77.0" prefHeight="25.0" prefWidth="156.0" />
->>>>>>> 0159e596dbfb437fd2e0411716cd6fce0bb7f4e1
-      <TextArea fx:id="txtComplectationInfo" layoutX="461.0" layoutY="159.0" prefHeight="121.0" prefWidth="298.0" style="-fx-border-color: #000;">
+      <TextArea fx:id="txtEquipmentInfo" layoutX="461.0" layoutY="159.0" prefHeight="121.0" prefWidth="298.0" style="-fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextArea>

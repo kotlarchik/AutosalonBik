@@ -1,6 +1,5 @@
 package kotlarchik.controllers;
 
-import com.sun.glass.ui.CommonDialogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +25,8 @@ import org.hibernate.cfg.Configuration;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.Set;
 
 public class ControllerFulLInfo {
     @FXML
@@ -43,7 +45,7 @@ public class ControllerFulLInfo {
     private TextField txtCode;
 
     @FXML
-    private TextField txtEquipmentInfo;
+    private TextArea txtEquipmentInfo;
 
     @FXML
     private Button hide;
@@ -58,14 +60,17 @@ public class ControllerFulLInfo {
     private ComboBox<Transmission> comboTransmission;
 
     @FXML
-    private ComboBox<Instancetransmission> comboCountTrans;
+    private ComboBox<Gears> comboCountTrans;
 
     private Instancemodel instancemodel;
+
+    private Options option;
 
     private final ObservableList<Marka> markas = FXCollections.observableArrayList();
     private final ObservableList<Equipment>  equipments = FXCollections.observableArrayList();
     private final ObservableList<Transmission> transmissions = FXCollections.observableArrayList();
-    private final ObservableList<Instancetransmission> instancetransmissions = FXCollections.observableArrayList();
+    private final ObservableList<Gears> gears = FXCollections.observableArrayList();
+    private final ObservableList<Options> optionsList = FXCollections.observableArrayList();
 
 
     @FXML
@@ -77,6 +82,9 @@ public class ControllerFulLInfo {
     private void initData(){
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
+        DAO<Options, Integer> optionsDao = new ServiceOptions(factory);
+        optionsList.addAll(optionsDao.readAll());
+
         DAO<Marka, Integer> markaDAO = new ServiceMarka(factory);
         markas.addAll(markaDAO.readAll());
 
@@ -86,17 +94,18 @@ public class ControllerFulLInfo {
         DAO<Transmission, Integer> transmissionIntegerDAO = new ServiceTransmission(factory);
         transmissions.addAll(transmissionIntegerDAO.readAll());
 
-        DAO<Instancetransmission, Integer> instancetransmissionIntegerDAO = new ServiceInstanceTransmission(factory);
-        instancetransmissions.addAll(instancetransmissionIntegerDAO.readAll());
+        DAO<Gears, Integer> gearsIntegerDAO = new ServiceGears(factory);
+        gears.addAll(gearsIntegerDAO.readAll());
     }
 
     private void initComboBox() {
         comboMark.setItems(markas);
         comboEquipment.setItems(equipments);
         comboTransmission.setItems(transmissions);
-        comboCountTrans.setItems(instancetransmissions);
+        comboCountTrans.setItems(gears);
     }
 
+    private String namePhoto = null;
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -104,7 +113,6 @@ public class ControllerFulLInfo {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Все файлы", "*.png", "*.jpg")
         );
-        String namePhoto = null;
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
@@ -127,18 +135,83 @@ public class ControllerFulLInfo {
         Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
 
-    private void clearScreen(){}
+    private void clearScreen(){
+        markas.clear();
+        equipments.clear();
+        transmissions.clear();
+        gears.clear();
+        optionsList.clear();
+        initialize();
+
+        txtModel.setText(instancemodel.getModel().getName());
+        txtMarka.setText(instancemodel.getModel().getMarka().getName());
+    }
 
     @FXML
-    void pressUp(ActionEvent event) {}
+    void pressUp(ActionEvent event) throws IOException {
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
+//        Instancemodel;
+        DAO<Instancemodel, Integer> instancemodelDAO = new ServiceInstanceModel(factory);
+        instancemodel.setCode(txtCode.getText());
+        instancemodel.setCost(Double.parseDouble(txtCost.getText()));
+        if (comboEquipment.getValue() != null){
+            instancemodel.setEquipment(comboEquipment.getValue());
+        } else {
+            instancemodel.setEquipment(instancemodel.getEquipment());
+        }
+
+        if (namePhoto != null) {
+            instancemodel.setImage("image/" + namePhoto);
+        } else {
+            instancemodel.setImage(instancemodel.getImage());
+        }
+        instancemodelDAO.update(instancemodel);
+
+
+//        Mark;
+        DAO<Model, Integer> modelIntegerDAO = new ServiceModel(factory);
+
+        Model model = instancemodel.getModel();
+        if (!txtModel.getText().isEmpty()){
+            model.setName(txtModel.getText());
+        }
+
+        if (comboMark.getValue() != null) {
+            model.setMarka(comboMark.getValue());
+        }
+        modelIntegerDAO.update(model);
+
+//        Options;
+        DAO<Options, Integer> optionsDAO = new ServiceOptions(factory);
+        Options options = option;
+
+        if (!txtEquipmentInfo.getText().isEmpty() && comboEquipment.getValue() != null){
+            options.setName(txtEquipmentInfo.getText());
+            options.setEquipment(comboEquipment.getValue());
+        } else if (comboEquipment.getValue() == null){
+            options.setEquipment(option.getEquipment());
+            options.setName(txtEquipmentInfo.getText());
+        }
+
+        optionsDAO.update(option);
+        clearScreen();
+    }
 
     public void setData(Instancemodel instancemodel){
         this.instancemodel = instancemodel;
         txtMarka.setText(instancemodel.getModel().getMarka().getName());
         txtModel.setText(instancemodel.getModel().getName());
-        txtCost.setText(String.format("%.3f руб.", instancemodel.getCost()));
+        txtCost.setText(String.format("%.0f", instancemodel.getCost()));
         imageView.setImage(new Image(instancemodel.getImage()));
+        txtCode.setText(instancemodel.getCode());
+
+        for (Options options1: optionsList) {
+            if (options1.getEquipment().getId() == instancemodel.getEquipment().getId()){
+                txtEquipmentInfo.setText(options1.getName());
+                this.option = options1;
+            }
+        }
     }
 
     @FXML

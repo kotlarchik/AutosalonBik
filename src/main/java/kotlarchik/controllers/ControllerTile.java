@@ -1,8 +1,9 @@
 package kotlarchik.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,9 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import kotlarchik.dao.DAO;
 import kotlarchik.model.Instancemodel;
-import kotlarchik.model.Marka;
-import kotlarchik.model.Model;
+import kotlarchik.model.Options;
+import kotlarchik.service.ServiceOptions;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -46,6 +48,7 @@ public class ControllerTile {
         visibleTile();
     }
 
+
     public void initData(Instancemodel instancemodel){
         this.instancemodel = instancemodel;
         code.setText("Комплектация:" + instancemodel.getCode());
@@ -55,8 +58,10 @@ public class ControllerTile {
         labelModel.setText(String.valueOf(instancemodel.getModel()));
     }
 
+
     @FXML
     public void click(MouseEvent mouseEvent) throws IOException {
+//        initOptionsForInstance();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FullInfo.fxml"));
         AnchorPane anchorPane = loader.load();
         ControllerFulLInfo controllerFulLInfo = loader.getController();

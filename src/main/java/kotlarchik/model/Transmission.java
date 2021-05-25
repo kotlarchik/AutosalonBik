@@ -25,8 +25,6 @@ public class Transmission {
 
     @Override
     public String toString() {
-        return "Transmission{" +
-                "id=" + id +
-                ", type='" + type;
+        return type;
     }
 }

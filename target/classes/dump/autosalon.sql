@@ -208,6 +208,30 @@ INSERT INTO `equipment` VALUES (1,'Базовая'),(3,'Средняя'),(4,'П�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gears`
+--
+
+DROP TABLE IF EXISTS `gears`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gears` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `number` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gears`
+--
+
+LOCK TABLES `gears` WRITE;
+/*!40000 ALTER TABLE `gears` DISABLE KEYS */;
+INSERT INTO `gears` VALUES (1,5),(2,6),(3,7);
+/*!40000 ALTER TABLE `gears` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `instanceengine`
 --
 
@@ -281,10 +305,12 @@ DROP TABLE IF EXISTS `instancetransmission`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `instancetransmission` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `numberGears` int NOT NULL,
   `transmission_id` int NOT NULL,
+  `gears_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_instanceTransmission_transmission1_idx` (`transmission_id`),
+  KEY `fk_instancetransmission_gears1_idx` (`gears_id`),
+  CONSTRAINT `fk_instancetransmission_gears1` FOREIGN KEY (`gears_id`) REFERENCES `gears` (`id`),
   CONSTRAINT `fk_instanceTransmission_transmission1` FOREIGN KEY (`transmission_id`) REFERENCES `transmission` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -295,7 +321,7 @@ CREATE TABLE `instancetransmission` (
 
 LOCK TABLES `instancetransmission` WRITE;
 /*!40000 ALTER TABLE `instancetransmission` DISABLE KEYS */;
-INSERT INTO `instancetransmission` VALUES (1,5,1),(2,5,1),(3,6,2),(4,6,2),(5,7,4),(6,5,1);
+INSERT INTO `instancetransmission` VALUES (1,1,1),(5,2,2),(6,3,3);
 /*!40000 ALTER TABLE `instancetransmission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -475,4 +501,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-24 21:21:55
+-- Dump completed on 2021-05-25 14:39:36

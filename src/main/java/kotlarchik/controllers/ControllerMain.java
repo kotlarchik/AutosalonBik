@@ -14,8 +14,10 @@ import javafx.scene.layout.VBox;
 import kotlarchik.dao.DAO;
 import kotlarchik.model.Instancemodel;
 import kotlarchik.model.Marka;
+import kotlarchik.model.Options;
 import kotlarchik.service.ServiceInstanceModel;
 import kotlarchik.service.ServiceMarka;
+import kotlarchik.service.ServiceOptions;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -38,8 +40,9 @@ public class ControllerMain {
     private ComboBox<String> comboBox;
 
     private final SessionFactory factory = new Configuration().configure().buildSessionFactory();
-    private ObservableList<Marka> comboMarkaList = FXCollections.observableArrayList();
-    private ObservableList<Instancemodel> instanceModelList = FXCollections.observableArrayList();
+    private final ObservableList<Marka> comboMarkaList = FXCollections.observableArrayList();
+    private final ObservableList<Instancemodel> instanceModelList = FXCollections.observableArrayList();
+    private final ObservableList<Options> options = FXCollections.observableArrayList();
 
     @FXML
     void initialize() throws IOException {
@@ -56,6 +59,7 @@ public class ControllerMain {
         tilePane.setPadding(new Insets(15));
         tilePane.setHgap(15);
         tilePane.setVgap(15);
+
 
         for (Instancemodel instancemodel: instanceModelList){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Tile.fxml"));
@@ -77,8 +81,12 @@ public class ControllerMain {
     private void setData(){
         DAO<Instancemodel, Integer> instanceModelDAO = new ServiceInstanceModel(factory);
         instanceModelList.addAll(instanceModelDAO.readAll());
+
         DAO<Marka, Integer> markaDAO = new ServiceMarka(factory);
         comboMarkaList.addAll(markaDAO.readAll());
+
+        DAO<Options,Integer> optionsDAO = new ServiceOptions(factory);
+        options.addAll(optionsDAO.readAll());
     }
 
     private void search(){
