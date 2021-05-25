@@ -89,7 +89,7 @@ CREATE TABLE `contract` (
   CONSTRAINT `fk_contract_buyer1` FOREIGN KEY (`buyer_id`) REFERENCES `buyer` (`id`),
   CONSTRAINT `fk_contract_employee1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
   CONSTRAINT `fk_contract_instanceModel1` FOREIGN KEY (`instanceModel_id`) REFERENCES `instancemodel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `contract` (
 
 LOCK TABLES `contract` WRITE;
 /*!40000 ALTER TABLE `contract` DISABLE KEYS */;
-INSERT INTO `contract` VALUES (1,'423456','3465','2021-05-20',3,1,5),(2,'345235','3256','2023-08-20',4,2,6),(3,'687563','3267','2014-02-20',1,3,2),(4,'347335','2377','2003-04-20',2,2,3);
+INSERT INTO `contract` VALUES (1,'423456','3465','2021-05-20',3,1,5),(2,'345235','3256','2023-08-20',4,2,6),(3,'687563','3267','2014-02-20',1,3,2),(4,'347335','2377','2003-04-20',2,2,3),(5,'252355','2523','2010-12-12',4,3,1),(6,'578675','3456','2012-06-10',2,2,4);
 /*!40000 ALTER TABLE `contract` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (1,'Базовая'),(2,'Минимальная'),(3,'Средняя'),(4,'Премиум'),(5,'Люкс');
+INSERT INTO `equipment` VALUES (1,'Базовая'),(3,'Средняя'),(4,'Премиум'),(5,'Люкс');
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,6 +245,7 @@ DROP TABLE IF EXISTS `instancemodel`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `instancemodel` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(100) NOT NULL,
   `color` varchar(50) NOT NULL,
   `cost` decimal(19,3) NOT NULL,
   `image` varchar(100) NOT NULL,
@@ -267,7 +268,7 @@ CREATE TABLE `instancemodel` (
 
 LOCK TABLES `instancemodel` WRITE;
 /*!40000 ALTER TABLE `instancemodel` DISABLE KEYS */;
-INSERT INTO `instancemodel` VALUES (1,'Белый',400.000,'image/1.png',2,1,1),(2,'Белый',900.000,'image/2.png',3,4,2),(3,'Чёрный',580.000,'image/3.png',2,3,3),(4,'Серый',480.000,'image/4.png',3,2,4),(5,'Белый',500.000,'image/5.png',3,5,5),(6,'Чёрный',120.000,'image/6.png',1,6,6);
+INSERT INTO `instancemodel` VALUES (1,'AS214234234','Белый',400.000,'image/1.png',1,1,1),(2,'FG252523355','Белый',900.000,'image/2.png',3,4,2),(3,'DS238567356','Чёрный',580.000,'image/3.png',1,3,3),(4,'JK827346256','Серый',480.000,'image/4.png',3,2,4),(5,'TR234623656','Белый',500.000,'image/5.png',3,5,5),(6,'OP832883955','Чёрный',120.000,'image/6.png',1,6,6);
 /*!40000 ALTER TABLE `instancemodel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,7 +286,7 @@ CREATE TABLE `instancetransmission` (
   PRIMARY KEY (`id`),
   KEY `fk_instanceTransmission_transmission1_idx` (`transmission_id`),
   CONSTRAINT `fk_instanceTransmission_transmission1` FOREIGN KEY (`transmission_id`) REFERENCES `transmission` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,6 +295,7 @@ CREATE TABLE `instancetransmission` (
 
 LOCK TABLES `instancetransmission` WRITE;
 /*!40000 ALTER TABLE `instancetransmission` DISABLE KEYS */;
+INSERT INTO `instancetransmission` VALUES (1,5,1),(2,5,1),(3,6,2),(4,6,2),(5,7,4),(6,5,1);
 /*!40000 ALTER TABLE `instancetransmission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -473,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-22 21:47:51
+-- Dump completed on 2021-05-24 21:21:55

@@ -17,9 +17,6 @@ public class Instancetransmission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "numberGears")
-    private int numberGears;
-
     @OneToMany(mappedBy = "instancetransmission")
     private Set<Options> optionsSet;
 
@@ -27,10 +24,13 @@ public class Instancetransmission {
     @JoinColumn(name = "transmission_id")
     private Transmission transmission;
 
+    @ManyToOne
+    @JoinColumn(name = "gears_id")
+    private Gears gears;
+
     @Override
     public String toString() {
         return "Instancetransmission{" +
-                "id=" + id +
-                ", numberGears=" + numberGears;
+                "id=" + id;
     }
 }
