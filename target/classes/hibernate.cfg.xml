@@ -21,6 +21,7 @@
         <mapping class="kotlarchik.model.Instanceengine"/>
         <mapping class="kotlarchik.model.Instancemodel"/>
         <mapping class="kotlarchik.model.Instancetransmission"/>
+        <mapping class="kotlarchik.model.Gears"/>
         <mapping class="kotlarchik.model.Marka"/>
         <mapping class="kotlarchik.model.Model"/>
         <mapping class="kotlarchik.model.Options"/>

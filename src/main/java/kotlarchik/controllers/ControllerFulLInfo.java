@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 public class ControllerFulLInfo {
+    public Button buttonPTS;
     @FXML
     private ImageView imageView;
 
@@ -43,10 +45,16 @@ public class ControllerFulLInfo {
     private TextField txtCode;
 
     @FXML
-    private TextField txtEquipmentInfo;
+    private TextArea txtEquipmentInfo;
 
     @FXML
-    private Button hide;
+    private TextField txtEquipment;
+
+    @FXML
+    private TextField txtTransmission;
+
+    @FXML
+    private TextField txtCountGears;
 
     @FXML
     private ComboBox<Marka> comboMark;
@@ -94,7 +102,6 @@ public class ControllerFulLInfo {
         comboMark.setItems(markas);
         comboEquipment.setItems(equipments);
         comboTransmission.setItems(transmissions);
-        comboCountTrans.setItems(instancetransmissions);
     }
 
     @FXML

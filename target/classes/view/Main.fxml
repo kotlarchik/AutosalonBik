@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: #ffadda;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerMain">
+<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: #2F3C50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerMain">
    <children>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="10.0" layoutY="100.0" prefHeight="490.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
          <content>
@@ -18,29 +19,149 @@
       </ScrollPane>
       <Label layoutX="11.0" layoutY="12.0" text="Поиск:">
          <font>
-            <Font name="Comic Sans MS Bold" size="16.0" />
+            <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <TextField fx:id="search" layoutX="79.0" layoutY="11.0" prefHeight="25.0" prefWidth="250.0" style="-fx-border-color: #000;">
+      <TextField fx:id="search" layoutX="79.0" layoutY="11.0" prefHeight="25.0" prefWidth="250.0" style="-fx-border-color: #000; -fx-background-radius: 30; -fx-border-radius: 30;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <ComboBox fx:id="comboBox" layoutX="179.0" layoutY="55.0" prefWidth="150.0" style="-fx-border-color: #000;">
+      <ComboBox fx:id="comboBox" layoutX="220.0" layoutY="57.0" prefWidth="150.0" style="-fx-border-color: #000; -fx-background-radius: 30; -fx-border-radius: 30;">
          <effect>
             <InnerShadow />
          </effect>
       </ComboBox>
-      <Button layoutX="400.0" layoutY="12.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="400.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="501.0" layoutY="12.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="501.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="462.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #b6bfcc;" text="Button">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.2" topOpacity="0.15" />
+         </effect></Button>
+      <Button layoutX="462.0" layoutY="55.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #b6bfcc;" text="Button">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.2" topOpacity="0.15" />
+         </effect></Button>
+      <Button layoutX="563.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #b6bfcc;" text="Button">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.2" topOpacity="0.15" />
+         </effect></Button>
+      <Button layoutX="563.0" layoutY="55.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #b6bfcc;" text="Button">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.2" topOpacity="0.15" />
+         </effect></Button>
       <Label layoutX="11.0" layoutY="58.0" text="Сортировка по маркам:">
          <font>
-            <Font name="Comic Sans MS Bold" size="14.0" />
+            <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
    </children>
    <effect>

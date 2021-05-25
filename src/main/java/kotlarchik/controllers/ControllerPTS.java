@@ -34,6 +34,21 @@ public class ControllerPTS {
     private ComboBox<?> comboKM;
 
     @FXML
+    private TextField txtBody;
+
+    @FXML
+    private TextField txtEngine;
+
+    @FXML
+    private TextField txtEnginePower;
+
+    @FXML
+    private TextField txtEngineVolume;
+
+    @FXML
+    private TextField txtKM;
+
+    @FXML
     void pressUpPTS(ActionEvent event) {
 
     }
