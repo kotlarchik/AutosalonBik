@@ -84,7 +84,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <ComboBox fx:id="combo" layoutX="158.0" layoutY="350.0" prefHeight="25.0" prefWidth="233.0" AnchorPane.topAnchor="350.0" />
+      <ComboBox fx:id="comboMark" layoutX="158.0" layoutY="350.0" prefHeight="25.0" prefWidth="233.0" AnchorPane.topAnchor="350.0" />
       <Button fx:id="buttonPTS" layoutX="632.0" layoutY="416.0" mnemonicParsing="false" onAction="#pressPTS" prefHeight="62.0" prefWidth="130.0" text="Обновить ПТС" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
@@ -196,7 +196,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="comboComplectation" layoutX="604.0" layoutY="77.0" prefHeight="25.0" prefWidth="156.0" />
+      <ComboBox fx:id="comboEquipment" layoutX="604.0" layoutY="77.0" prefHeight="25.0" prefWidth="156.0" />
       <TextArea fx:id="txtComplectationInfo" layoutX="461.0" layoutY="159.0" prefHeight="121.0" prefWidth="298.0" style="-fx-border-color: #000;">
          <effect>
             <InnerShadow />

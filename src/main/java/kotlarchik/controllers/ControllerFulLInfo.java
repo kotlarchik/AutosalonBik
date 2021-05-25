@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,19 +17,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kotlarchik.dao.DAO;
-import kotlarchik.model.Instancemodel;
-import kotlarchik.model.Marka;
+import kotlarchik.model.*;
+import kotlarchik.service.*;
 import lombok.SneakyThrows;
-import org.apache.commons.io.FileUtils;
-import kotlarchik.service.ServiceInstanceModel;
-import kotlarchik.service.ServiceMarka;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
@@ -48,15 +40,33 @@ public class ControllerFulLInfo {
     private TextField txtCost;
 
     @FXML
+    private TextField txtCode;
+
+    @FXML
+    private TextField txtEquipmentInfo;
+
+    @FXML
     private Button hide;
 
     @FXML
-    private ComboBox<Marka> combo;
+    private ComboBox<Marka> comboMark;
+
+    @FXML
+    private ComboBox<Equipment> comboEquipment;
+
+    @FXML
+    private ComboBox<Transmission> comboTransmission;
+
+    @FXML
+    private ComboBox<Instancetransmission> comboCountTrans;
 
     private Instancemodel instancemodel;
 
-    private ObservableList<Marka> markas = FXCollections.observableArrayList();
-    private ObservableList<Instancemodel> instancemodels = FXCollections.observableArrayList();
+    private final ObservableList<Marka> markas = FXCollections.observableArrayList();
+    private final ObservableList<Equipment>  equipments = FXCollections.observableArrayList();
+    private final ObservableList<Transmission> transmissions = FXCollections.observableArrayList();
+    private final ObservableList<Instancetransmission> instancetransmissions = FXCollections.observableArrayList();
+
 
     @FXML
     void initialize(){
@@ -66,17 +76,27 @@ public class ControllerFulLInfo {
 
     private void initData(){
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        DAO<Instancemodel, Integer> instancemodelDAO = new ServiceInstanceModel(factory);
 
         DAO<Marka, Integer> markaDAO = new ServiceMarka(factory);
         markas.addAll(markaDAO.readAll());
+
+        DAO<Equipment, Integer> equipmentIntegerDAO = new ServiceEquipment(factory);
+        equipments.addAll(equipmentIntegerDAO.readAll());
+
+        DAO<Transmission, Integer> transmissionIntegerDAO = new ServiceTransmission(factory);
+        transmissions.addAll(transmissionIntegerDAO.readAll());
+
+        DAO<Instancetransmission, Integer> instancetransmissionIntegerDAO = new ServiceInstanceTransmission(factory);
+        instancetransmissions.addAll(instancetransmissionIntegerDAO.readAll());
     }
 
     private void initComboBox() {
-        combo.setItems(markas);
+        comboMark.setItems(markas);
+        comboEquipment.setItems(equipments);
+        comboTransmission.setItems(transmissions);
+        comboCountTrans.setItems(instancetransmissions);
     }
 
-    // <=========> AlexLifeless <=========>
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -106,7 +126,8 @@ public class ControllerFulLInfo {
     private void copyImage(File source, File dest){
         Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
-    // <=========> AlexLifeless <=========>
+
+    private void clearScreen(){}
 
     @FXML
     void pressUp(ActionEvent event) {}

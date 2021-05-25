@@ -29,8 +29,6 @@ public class Instancetransmission {
 
     @Override
     public String toString() {
-        return "Instancetransmission{" +
-                "id=" + id +
-                ", numberGears=" + numberGears;
+        return String.valueOf(numberGears);
     }
 }
