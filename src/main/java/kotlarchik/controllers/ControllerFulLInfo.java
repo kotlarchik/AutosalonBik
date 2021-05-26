@@ -85,7 +85,6 @@ public class ControllerFulLInfo {
         initData();
         initComboBox();
         initTxt();
-        check();
     }
 
     private void initData(){
@@ -165,8 +164,6 @@ public class ControllerFulLInfo {
         instancemodel.setCost(Double.parseDouble(txtCost.getText()));
         if (comboEquipment.getValue() != null){
             instancemodel.setEquipment(comboEquipment.getValue());
-        } else {
-            instancemodel.setEquipment(instancemodel.getEquipment());
         }
 
         if (namePhoto != null) {
@@ -197,39 +194,39 @@ public class ControllerFulLInfo {
         if (!txtEquipmentInfo.getText().isEmpty() && comboEquipment.getValue() != null){
             options.setName(txtEquipmentInfo.getText());
             options.setEquipment(comboEquipment.getValue());
-            optionsDAO.update(option);
+            optionsDAO.update(options);
         } else if (comboEquipment.getValue() == null){
             options.setEquipment(option.getEquipment());
             options.setName(txtEquipmentInfo.getText());
-            optionsDAO.update(option);
+            optionsDAO.update(options);
         }
 
 
 
 //        Transmission;
-        DAO<Instancetransmission, Integer> instancetransmissionDAO = new ServiceInstanceTransmission(factory);
-        Instancetransmission instancetransmission = new Instancetransmission();
-        ObservableList<Instancetransmission> instancetransmissionList = FXCollections.observableArrayList();
-        instancetransmissionList.addAll(instancetransmissionDAO.readAll());
-        for (Instancetransmission instancetransmission1:instancetransmissionList) {
-            if (instancetransmission1.getTransmission().getId() ==
-                    options.getInstancetransmission()
-                            .getTransmission()
-                            .getId()){
-                instancetransmission = instancetransmission1;
-            }
-        }
-
-
-        if (comboTransmission.getValue() != null){
-            instancetransmission.setTransmission(comboTransmission.getValue());
-        } else {
-            instancetransmission.setTransmission(options.getInstancetransmission().getTransmission());
-        }
-
-        instancetransmissionDAO.update(instancetransmission);
-
-
+//        DAO<Instancetransmission, Integer> instancetransmissionDAO = new ServiceInstanceTransmission(factory);
+//        Instancetransmission instancetransmission = new Instancetransmission();
+//        ObservableList<Instancetransmission> instancetransmissionList = FXCollections.observableArrayList();
+//        instancetransmissionList.addAll(instancetransmissionDAO.readAll());
+//        for (Instancetransmission instancetransmission1:instancetransmissionList) {
+//            if (instancetransmission1.getTransmission().getId() ==
+//                    options.getInstancetransmission()
+//                            .getTransmission()
+//                            .getId()){
+//                instancetransmission = instancetransmission1;
+//            }
+//        }
+//
+//
+//        if (comboTransmission.getValue() != null){
+//            instancetransmission.setTransmission(comboTransmission.getValue());
+//        } else {
+//            instancetransmission.setTransmission(options.getInstancetransmission().getTransmission());
+//        }
+//
+//        instancetransmissionDAO.update(instancetransmission);
+//
+//
         clearScreen();
     }
 

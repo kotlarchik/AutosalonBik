@@ -2,15 +2,21 @@ package kotlarchik.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import kotlarchik.dao.DAO;
 import kotlarchik.model.Instancemodel;
 import kotlarchik.model.Marka;
@@ -133,5 +139,49 @@ public class ControllerMain {
                     e.printStackTrace();
                 }
             });
+    }
+
+    public void pressNewAuto(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddNewAuto.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Создание нового автомобиля");
+        primaryStage.setResizable(false);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void pressAddClient(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddNewClient.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Регистрация нового клиента");
+        primaryStage.setResizable(false);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void pressContract(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddContract.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Составление контракта");
+        primaryStage.setResizable(false);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void pressEmployee(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddEmployee.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Внесение нового сотрудника");
+        primaryStage.setResizable(false);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 }

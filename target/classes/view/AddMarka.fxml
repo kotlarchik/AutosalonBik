@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerMarka">
+   <children>
+      <TextField fx:id="txtMarka" layoutX="32.0" layoutY="84.0" style="-fx-background-radius: 30; -fx-border-color: #000; -fx-border-radius: 30;">
+         <font>
+            <Font name="Comic Sans MS Bold" size="15.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <Button layoutX="266.0" layoutY="82.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-background-color: #b6bfcc; -fx-border-radius: 30;" text="Добавить">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.3" topOpacity="0.15" />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

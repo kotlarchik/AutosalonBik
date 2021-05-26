@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class ControllerPTS {
+public class ControllerUpdatePTS {
     @FXML
     private TextField txtSeria;
 

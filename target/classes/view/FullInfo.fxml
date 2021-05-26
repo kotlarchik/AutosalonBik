@@ -170,8 +170,14 @@
          <textFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.24285714285714288">
                <stops>
-                  <Stop color="#ff00fb" />
-                  <Stop color="#516eff" offset="1.0" />
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9843137264251709" />
+                     </color></Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                     </color></Stop>
                </stops>
             </LinearGradient>
          </textFill>
