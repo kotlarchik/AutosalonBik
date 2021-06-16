@@ -16,13 +16,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kotlarchik.dao.DAO;
 import kotlarchik.model.*;
-import kotlarchik.service.ServiceMarka;
-import kotlarchik.service.ServiceModel;
+import kotlarchik.service.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class ControllerAddNewAuto {
     @FXML
@@ -47,13 +48,48 @@ public class ControllerAddNewAuto {
     private TextField txtColor;
 
     @FXML
+    TextField txtImage;
+
+    ObservableList<Model> listModel = FXCollections.observableArrayList();
+    ObservableList<PTS> listPTS = FXCollections.observableArrayList();
+    ObservableList<Equipment> listEquipment = FXCollections.observableArrayList();
+
+    @FXML
     void pressAdd(ActionEvent event) {
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        DAO<Instancemodel, Integer> instancemodelIntegerDAO = new ServiceInstanceModel(factory);
+
+        Instancemodel instancemodel = new Instancemodel();
+        if (txtCode.getText().isEmpty()){
+            status.setText("Код комплектации пусто");
+        } else if (txtColor.getText().isEmpty()){
+            status.setText("Цвет пусто");
+        } else if (comboModel.getValue() == null){
+            status.setText("Модель пусто");
+        } else if (txtCost.getText().isEmpty()){
+            status.setText("Стоимость пусто");
+        } else if (comboPTS.getValue() == null){
+            status.setText("ПТС пусто");
+        } else if (txtImage.getText().isEmpty()){
+            status.setText("Фотография пусто");
+        } else if (comboEquip.getValue() == null){
+            status.setText("Комплектации пусто");
+        } else {
+            instancemodel.setCode(txtCode.getText());
+            instancemodel.setColor(txtColor.getText());
+            instancemodel.setModel(comboModel.getValue());
+            instancemodel.setCost(Double.valueOf(txtCost.getText()));
+            instancemodel.setPts(comboPTS.getValue());
+            instancemodel.setImage("image/"+txtImage.getText());
+            instancemodel.setEquipment(comboEquip.getValue());
+            instancemodelIntegerDAO.create(instancemodel);
+            status.setText("Автомобиль добавлен");
+        }
 
     }
 
     @FXML
     void pressAddEquip(ActionEvent event) {
-
     }
 
     public void pressAddPTS(ActionEvent event) throws IOException {
@@ -89,7 +125,7 @@ public class ControllerAddNewAuto {
         primaryStage.show();
     }
 
-    public void pressSetImage(ActionEvent event) {
+    public void pressSetImage(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выберите путь к изображению");
         fileChooser.getExtensionFilters().addAll(
@@ -97,14 +133,35 @@ public class ControllerAddNewAuto {
         );
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        if (selectedFile != null){
+            txtImage.setText(selectedFile.getName());
+            File source = new File(selectedFile.getAbsolutePath());
+            File dest = new File("./src/main/resources/image/" + txtImage.getText());
+            Files.copy(source.toPath(),dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            txtImage.setDisable(true);
+        }
     }
 
     @FXML
     void initialize(){
-
+        initData();
     }
 
     private void initData(){
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
+        DAO<Model, Integer> modelIntegerDAO = new ServiceModel(factory);
+        listModel.addAll(modelIntegerDAO.readAll());
+        comboModel.setItems(listModel);
+
+        DAO<PTS, Integer> ptsIntegerDAO = new ServicePTS(factory);
+        listPTS.addAll(ptsIntegerDAO.readAll());
+        comboPTS.setItems(listPTS);
+
+        DAO<Equipment, Integer> equipmentIntegerDAO = new ServiceEquipment(factory);
+        listEquipment.addAll(equipmentIntegerDAO.readAll());
+        comboEquip.setItems(listEquipment);
     }
 }

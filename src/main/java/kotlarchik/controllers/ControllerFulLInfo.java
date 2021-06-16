@@ -122,7 +122,7 @@ public class ControllerFulLInfo {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Все файлы", "*.png", "*.jpg")
         );
-
+//    add photo;
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null){
