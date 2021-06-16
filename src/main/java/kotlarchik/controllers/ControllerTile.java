@@ -61,7 +61,6 @@ public class ControllerTile {
 
     @FXML
     public void click(MouseEvent mouseEvent) throws IOException {
-//        initOptionsForInstance();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FullInfo.fxml"));
         AnchorPane anchorPane = loader.load();
         ControllerFulLInfo controllerFulLInfo = loader.getController();

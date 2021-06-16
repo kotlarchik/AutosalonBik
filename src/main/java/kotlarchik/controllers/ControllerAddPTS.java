@@ -4,6 +4,6 @@ import javafx.event.ActionEvent;
 
 public class ControllerAddPTS {
 
-    public void pressUpPTS(ActionEvent event) {
+    public void pressAddPTS(ActionEvent event) {
     }
 }

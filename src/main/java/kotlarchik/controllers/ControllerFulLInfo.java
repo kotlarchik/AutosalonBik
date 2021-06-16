@@ -114,6 +114,7 @@ public class ControllerFulLInfo {
     }
 
     private String namePhoto = null;
+
     @FXML
     void imageClick() throws IOException {
         FileChooser fileChooser = new FileChooser();

@@ -11,9 +11,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="600.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerUpPTS">
+<AnchorPane prefHeight="550.0" prefWidth="600.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerAddPTS">
    <children>
-      <Button layoutX="221.0" layoutY="489.0" mnemonicParsing="false" onAction="#pressUpPTS" prefHeight="35.0" prefWidth="186.0" style="-fx-background-color: #b6bfcc; -fx-background-radius: 30; -fx-border-radius: 30;" text="Внести изменения" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="221.0" layoutY="489.0" mnemonicParsing="false" onAction="#pressAddPTS" prefHeight="35.0" prefWidth="186.0" style="-fx-background-color: #b6bfcc; -fx-background-radius: 30; -fx-border-radius: 30;" text="Готово" textAlignment="CENTER" wrapText="true">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerModel">
     <children>
@@ -21,12 +25,12 @@
                     <stops>
                         <Stop>
                             <color>
-                                <Color red="1.0" blue="0.9843137264251709" />
+                                <Color blue="0.9843137264251709" red="1.0" />
                             </color>
                         </Stop>
                         <Stop offset="1.0">
                             <color>
-                                <Color red="0.3176470696926117" green="0.4313725531101227" blue="1.0" />
+                                <Color blue="1.0" green="0.4313725531101227" red="0.3176470696926117" />
                             </color>
                         </Stop>
                     </stops>

@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #2F3C50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerUpdatePTS">
+<AnchorPane prefHeight="600.0" prefWidth="360.0" style="-fx-background-color: #2F3C50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerUpdatePTS">
    <children>
       <Button layoutX="88.0" layoutY="549.0" mnemonicParsing="false" onAction="#pressUpPTS" prefHeight="35.0" prefWidth="186.0" style="-fx-background-color: #b6bfcc; -fx-background-radius: 30; -fx-border-radius: 30;" text="Внести изменения" textAlignment="CENTER" wrapText="true">
          <textFill>
@@ -30,7 +30,7 @@
             <Reflection fraction="0.2" topOpacity="0.15" />
          </effect>
       </Button>
-      <Label layoutX="18.0" layoutY="13.0" text="Серия:">
+      <Label layoutX="23.0" layoutY="17.0" text="Серия:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -44,7 +44,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="17.0" layoutY="50.0" text="Номер:">
+      <Label layoutX="22.0" layoutY="54.0" text="Номер:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -58,7 +58,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="136.0" prefHeight="51.0" prefWidth="100.0" text="Масса без нагрузки:" wrapText="true">
+      <Label layoutX="21.0" layoutY="140.0" prefHeight="51.0" prefWidth="100.0" text="Масса без нагрузки:" wrapText="true">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -72,7 +72,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="18.0" layoutY="79.0" prefHeight="58.0" prefWidth="250.0" text="Разрешённая максимальная масса:" wrapText="true">
+      <Label layoutX="23.0" layoutY="83.0" prefHeight="58.0" prefWidth="250.0" text="Разрешённая максимальная масса:" wrapText="true">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -86,7 +86,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="202.0" text="Тип кузова:">
+      <Label layoutX="18.0" layoutY="206.0" text="Тип кузова:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -100,7 +100,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="265.0" text="Двигатель:">
+      <Label layoutX="19.0" layoutY="269.0" text="Двигатель:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -114,25 +114,25 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSeria" layoutX="80.0" layoutY="16.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtSeria" layoutX="133.0" layoutY="18.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtNumber" layoutX="85.0" layoutY="53.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtNumber" layoutX="133.0" layoutY="53.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtMaxWeight" layoutX="81.0" layoutY="111.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtMaxWeight" layoutX="133.0" layoutY="114.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtNormaWeight" layoutX="103.0" layoutY="165.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtNormaWeight" layoutX="133.0" layoutY="166.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <ComboBox fx:id="comboBody" layoutX="128.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
-      <ComboBox fx:id="comboEngine" layoutX="120.0" layoutY="295.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
-      <Label layoutX="15.0" layoutY="323.0" prefHeight="35.0" prefWidth="100.0" text="Мощность:" wrapText="true">
+      <ComboBox fx:id="comboBody" layoutX="133.0" layoutY="233.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
+      <ComboBox fx:id="comboEngine" layoutX="133.0" layoutY="298.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
+      <Label layoutX="20.0" layoutY="327.0" prefHeight="35.0" prefWidth="100.0" text="Мощность:" wrapText="true">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -146,8 +146,8 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="comboEnginePower" layoutX="112.0" layoutY="358.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
-      <Label layoutX="18.0" layoutY="390.0" text="Объём:">
+      <ComboBox fx:id="comboEnginePower" layoutX="133.0" layoutY="362.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
+      <Label layoutX="23.0" layoutY="394.0" text="Объём:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -161,7 +161,7 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="447.0" prefHeight="27.0" prefWidth="186.0" text="Крутящий момент:">
+      <Label layoutX="24.0" layoutY="451.0" prefHeight="27.0" prefWidth="186.0" text="Крутящий момент:">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -175,25 +175,25 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="comboEngineVolume" layoutX="90.0" layoutY="420.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
-      <ComboBox fx:id="comboKM" layoutX="190.0" layoutY="478.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
-      <TextField fx:id="txtBody" layoutX="128.0" layoutY="205.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <ComboBox fx:id="comboEngineVolume" layoutX="133.0" layoutY="421.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
+      <ComboBox fx:id="comboKM" layoutX="195.0" layoutY="482.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;" />
+      <TextField fx:id="txtBody" layoutX="133.0" layoutY="206.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtEngine" layoutX="120.0" layoutY="268.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtEngine" layoutX="133.0" layoutY="271.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtEnginePower" layoutX="116.0" layoutY="331.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtEnginePower" layoutX="133.0" layoutY="335.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtEngineVolume" layoutX="90.0" layoutY="393.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtEngineVolume" layoutX="133.0" layoutY="394.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <TextField fx:id="txtKM" layoutX="190.0" layoutY="451.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
+      <TextField fx:id="txtKM" layoutX="195.0" layoutY="455.0" prefHeight="25.0" prefWidth="140.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #000;">
          <effect>
             <InnerShadow />
          </effect></TextField>
