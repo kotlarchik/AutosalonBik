@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,6 +27,9 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 public class ControllerAddNewAuto {
+    @FXML
+    public Button buttonAdd;
+
     @FXML
     private TextField txtCode;
 
@@ -55,7 +59,7 @@ public class ControllerAddNewAuto {
     ObservableList<Equipment> listEquipment = FXCollections.observableArrayList();
 
     @FXML
-    void pressAdd(ActionEvent event) {
+    void pressAdd(ActionEvent event) throws IOException {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         DAO<Instancemodel, Integer> instancemodelIntegerDAO = new ServiceInstanceModel(factory);
 
@@ -84,12 +88,17 @@ public class ControllerAddNewAuto {
             instancemodel.setEquipment(comboEquip.getValue());
             instancemodelIntegerDAO.create(instancemodel);
             status.setText("Автомобиль добавлен");
+
+            Parent root = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Автосалон Бик");
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+            buttonAdd.getScene().getWindow().hide();
         }
 
-    }
-
-    @FXML
-    void pressAddEquip(ActionEvent event) {
     }
 
     public void pressAddPTS(ActionEvent event) throws IOException {
@@ -103,10 +112,10 @@ public class ControllerAddNewAuto {
         primaryStage.show();
     }
 
-    public void pressAddColor(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/AddColor.fxml"));
+    public void pressAddEquip(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddEquipment.fxml"));
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Создание нового цвета");
+        primaryStage.setTitle("Создание комплектации");
         primaryStage.setResizable(false);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));

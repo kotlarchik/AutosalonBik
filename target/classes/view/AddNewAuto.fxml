@@ -6,7 +6,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerAddNewAuto">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #2f3c50;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kotlarchik.controllers.ControllerAddNewAuto">
    <children>
       <Label layoutX="91.0" layoutY="81.0" text="Цвет:">
          <font>
@@ -85,7 +85,7 @@
          </effect>
       </TextField>
       <ComboBox fx:id="comboPTS" layoutX="156.0" layoutY="207.0" prefHeight="25.0" prefWidth="190.0" style="-fx-border-color: #000; -fx-border-radius: 30; -fx-background-radius: 30;" />
-      <Button layoutX="161.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressAdd" prefHeight="42.0" prefWidth="180.0" style="-fx-background-color: #b6bfcc; -fx-background-radius: 30; -fx-border-radius: 30;" text="Внести данные">
+      <Button fx:id="buttonAdd" layoutX="161.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressAdd" prefHeight="42.0" prefWidth="180.0" style="-fx-background-color: #b6bfcc; -fx-background-radius: 30; -fx-border-radius: 30;" text="Внести данные">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

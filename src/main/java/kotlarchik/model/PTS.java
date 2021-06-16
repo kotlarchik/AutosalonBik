@@ -44,12 +44,6 @@ public class PTS {
 
     @Override
     public String toString() {
-        return "PTS{" +
-                "id=" + id +
-                ", VIN='" + VIN + '\'' +
-                ", seria=" + seria +
-                ", number=" + number +
-                ", maxWeight='" + maxWeight + '\'' +
-                ", weightNorma='" + weightNorma;
+        return "VIN: "+VIN+" | " + "Серия: "+seria+" | " + "Номер: "+number+".";
     }
 }

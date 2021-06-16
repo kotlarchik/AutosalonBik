@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class ControllerMarka {
+public class ControllerEquipment {
     public TextField txtMarka;
 
     @FXML

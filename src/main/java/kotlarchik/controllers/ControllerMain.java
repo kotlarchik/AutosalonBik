@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -30,6 +31,9 @@ import org.hibernate.cfg.Configuration;
 import java.io.IOException;
 
 public class ControllerMain {
+    @FXML
+    public Button buttonAutoClose;
+
     @FXML
     private AnchorPane pane;
 
@@ -151,6 +155,7 @@ public class ControllerMain {
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon/666.png")));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        buttonAutoClose.getScene().getWindow().hide();
     }
 
     public void pressAddClient(ActionEvent event) throws IOException {
